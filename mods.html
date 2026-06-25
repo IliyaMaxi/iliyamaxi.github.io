@@ -2,104 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mods - Iliya</title>
+<title>Mod Page</title>
 
 <style>
-body {
+body{
     margin:0;
     font-family:Arial;
     background:#0f0f0f;
     color:white;
-    text-align:center;
 }
 
-/* انیمیشن ورود کل صفحه */
-.header {
-    animation: drop 0.9s ease;
-    margin-top:30px;
-}
-
-@keyframes drop {
-    from {
-        opacity:0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity:1;
-        transform: translateY(0);
-    }
-}
-
-/* سرچ */
-input {
-    padding:10px;
-    width:250px;
-    border:none;
-    border-radius:8px;
-    margin-top:20px;
-}
-
-/* کارت‌ها */
-.container {
+/* Tabs */
+.tabs{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:40px;
+    gap:15px;
+    padding:12px;
+    background:#1a1a1a;
+    border-bottom:1px solid #333;
 }
 
-/* انیمیشن کارت‌ها */
-.card {
-    background:#1e1e1e;
-    width:260px;
-    padding:15px;
-    border-radius:12px;
-
-    animation: fadeUp 0.8s ease;
-    transition:0.3s;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity:0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity:1;
-        transform: translateY(0);
-    }
-}
-
-.card:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 20px lime;
-}
-
-/* دکمه */
-a {
-    display:inline-block;
-    margin-top:10px;
+.tab{
+    cursor:pointer;
     padding:8px 12px;
-    background:green;
-    color:white;
-    text-decoration:none;
     border-radius:6px;
 }
 
-a:hover {
-    box-shadow:0 0 15px lime;
+.tab:hover{
+    background:#2a2a2a;
+}
+
+/* Main layout */
+.main{
+    display:flex;
+    gap:20px;
+    padding:25px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+/* icon */
+.icon{
+    width:110px;
+    height:110px;
+    background:#222;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* text */
+.info{
+    max-width:450px;
+}
+
+.download{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 16px;
+    background:green;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+/* like/dislike */
+.reactions{
+    margin-top:15px;
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    padding:6px 10px;
+    background:#222;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#333;
+}
+
+/* sections */
+.section{
+    display:none;
+    padding:20px;
+    background:#111;
+}
+
+.section.active{
+    display:block;
 }
 </style>
 
 <script>
-function searchMods() {
-    let val = document.getElementById("search").value.toLowerCase();
-    let cards = document.getElementsByClassName("card");
+function showTab(tab){
 
-    for(let i=0;i<cards.length;i++){
-        let text = cards[i].innerText.toLowerCase();
-        cards[i].style.display = text.includes(val) ? "block" : "none";
+    let sections = document.getElementsByClassName("section");
+
+    for(let i=0;i<sections.length;i++){
+        sections[i].classList.remove("active");
     }
+
+    document.getElementById(tab).classList.add("active");
 }
 </script>
 
@@ -107,32 +113,58 @@ function searchMods() {
 
 <body>
 
-<div class="header">
-    <h1>Mods</h1>
-
-    <input id="search" onkeyup="searchMods()" placeholder="Search mods...">
+<!-- Tabs -->
+<div class="tabs">
+    <div class="tab" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('images')">Images</div>
+    <div class="tab" onclick="showTab('videos')">Videos</div>
+    <div class="tab" onclick="showTab('comments')">Comments</div>
 </div>
 
-<div class="container">
+<!-- Overview (پیش‌فرض، بدون کلیک هم نمایش داده میشه) -->
+<div id="overview" class="section active">
 
-    <div class="card">
-        <h3>Iliya's AoH3 Mod</h3>
-        <p>Main mod</p>
-        <a href="mod-iliya.html">Download Page</a>
+    <div class="main">
+
+        <div class="icon">ICON</div>
+
+        <div class="info">
+            <h1>Mod Name</h1>
+
+            <p>
+                Custom AoH3 mod with new civilizations,
+                gameplay improvements and balance updates.
+            </p>
+
+            <a class="download" href="files/mod.zip">Download</a>
+
+            <div class="reactions">
+                <div class="btn">👍 Like</div>
+                <div class="btn">👎 Dislike</div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>Iran Formable 2</h3>
-        <p>Iran civilizations</p>
-        <a href="mod-iran.html">Download Page</a>
-    </div>
+</div>
 
-    <div class="card">
-        <h3>Turkish Formable</h3>
-        <p>Turkey expansion</p>
-        <a href="mod-turk.html">Download Page</a>
-    </div>
+<!-- Images -->
+<div id="images" class="section">
+    <h3>Images</h3>
+    <p>No images yet</p>
+</div>
 
+<!-- Videos -->
+<div id="videos" class="section">
+    <h3>Videos</h3>
+    <p>No videos yet</p>
+</div>
+
+<!-- Comments -->
+<div id="comments" class="section">
+    <h3>Comments</h3>
+    <p>No comments yet</p>
 </div>
 
 </body>
