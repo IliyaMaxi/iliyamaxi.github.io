@@ -10,12 +10,14 @@ body {
     font-family: Arial;
     background: #0f0f0f;
     color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* هدر */
-.header {
+.container {
     text-align: center;
-    padding: 60px 20px;
     animation: drop 1s ease;
 }
 
@@ -24,65 +26,31 @@ body {
     to {opacity:1; transform: translateY(0);}
 }
 
-.searchBox {
-    margin-top: 20px;
+a {
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background:green;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
 }
 
-input {
-    padding: 10px;
-    width: 250px;
-    border-radius: 8px;
-    border: none;
-}
-
-.modsBtn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background: green;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-}
-
-.modsBtn:hover {
-    box-shadow: 0 0 15px lime;
+a:hover {
+    box-shadow:0 0 15px lime;
 }
 </style>
-
-<script>
-function searchMods() {
-    let val = document.getElementById("search").value.toLowerCase();
-    if(val.includes("iran")) {
-        window.location.href = "mod-iran.html";
-    }
-    else if(val.includes("turk")) {
-        window.location.href = "mod-turk.html";
-    }
-    else if(val.includes("iliya")) {
-        window.location.href = "mod-iliya.html";
-    }
-    else {
-        alert("No mod found");
-    }
-}
-</script>
 
 </head>
 
 <body>
 
-<div class="header">
+<div class="container">
     <h1>Welcome to Iliya Mods</h1>
 
-    <p>AoH3 custom mods collection</p>
+    <p>Age of History 3 Custom Mods by Iliya Maxi</p>
 
-    <div class="searchBox">
-        <input id="search" placeholder="Search mods...">
-        <button onclick="searchMods()">Search</button>
-    </div>
-
-    <a class="modsBtn" href="mods.html">Browse All Mods</a>
+    <a href="mods.html">Enter Mods</a>
 </div>
 
 </body>
