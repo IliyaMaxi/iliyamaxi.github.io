@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mod Page</title>
+<title>Mod</title>
 
 <style>
 body{
@@ -12,36 +12,41 @@ body{
     color:white;
 }
 
-/* HEADER PANEL (مثل CurseForge) */
+/* TOP BAR (درست شده) */
 .topbar{
     display:flex;
     align-items:center;
+    justify-content:space-between;
     gap:20px;
-    padding:15px;
+
+    padding:20px 25px;
     background:#141414;
     border-bottom:1px solid #2a2a2a;
-    position:sticky;
-    top:0;
+}
+
+/* LEFT */
+.left{
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
 .icon{
-    width:70px;
-    height:70px;
+    width:85px;
+    height:85px;
     background:#222;
     border-radius:10px;
 }
 
-.info h2{margin:0;}
-
-.stats{
-    margin-left:auto;
-    display:flex;
-    gap:20px;
-    font-size:14px;
+/* CENTER TEXT */
+.titleBox h2{
+    margin:0;
 }
 
-/* BUTTONS */
+/* DOWNLOAD */
 .download{
+    display:inline-block;
+    margin-top:8px;
     padding:10px 16px;
     background:#2ecc71;
     color:black;
@@ -50,41 +55,48 @@ body{
     font-weight:bold;
 }
 
-/* LIKE SYSTEM */
-.likeBox{
+/* RIGHT (LIKE + DISLIKE + VIEW) */
+.right{
     display:flex;
-    gap:10px;
     align-items:center;
+    gap:15px;
 }
 
 .btn{
     cursor:pointer;
     font-size:18px;
-    user-select:none;
 }
 
-.active{
-    color:#2ecc71;
+.stats{
+    font-size:14px;
+    opacity:0.8;
 }
 
 /* CONTENT */
 .content{
-    padding:20px;
+    padding:25px;
 }
 
-.tabButtons{
+/* TAB BUTTONS */
+.tabs{
     display:flex;
     gap:10px;
     margin-bottom:20px;
 }
 
-.tabButtons div{
+.tabBtn{
     padding:8px 12px;
     background:#1e1e1e;
     border-radius:6px;
     cursor:pointer;
 }
 
+.tabBtn.active{
+    background:#2ecc71;
+    color:black;
+}
+
+/* TAB CONTENT */
 .tab{
     display:none;
 }
@@ -92,42 +104,43 @@ body{
 .tab.active{
     display:block;
 }
+
+/* BOX */
+.box{
+    background:#111;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #1f1f1f;
+}
 </style>
 
 <script>
-
-let likes = 0;
-let dislikes = 0;
-let liked = false;
-let disliked = false;
-let views = 0;
+let likes=0;
+let dislikes=0;
+let liked=false;
+let disliked=false;
+let views=0;
 
 function load(){
     views++;
-    document.getElementById("views").innerText = views;
-    document.getElementById("likes").innerText = likes;
-    document.getElementById("dislikes").innerText = dislikes;
+    document.getElementById("views").innerText=views;
+    document.getElementById("likes").innerText=likes;
+    document.getElementById("dislikes").innerText=dislikes;
 }
 
 function like(){
-    if(liked){
-        likes--;
-        liked=false;
-    }else{
-        likes++;
-        liked=true;
+    if(liked){likes--;liked=false;}
+    else{
+        likes++;liked=true;
         if(disliked){dislikes--;disliked=false;}
     }
     load();
 }
 
 function dislike(){
-    if(disliked){
-        dislikes--;
-        disliked=false;
-    }else{
-        dislikes++;
-        disliked=true;
+    if(disliked){dislikes--;disliked=false;}
+    else{
+        dislikes++;disliked=true;
         if(liked){likes--;liked=false;}
     }
     load();
@@ -135,61 +148,61 @@ function dislike(){
 
 function showTab(id){
     document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".tabBtn").forEach(b=>b.classList.remove("active"));
+
     document.getElementById(id).classList.add("active");
+    event.target.classList.add("active");
 }
 
-window.onload = load;
+window.onload=load;
 </script>
 
 </head>
 
 <body>
 
-<!-- TOP PANEL -->
+<!-- TOP BAR -->
 <div class="topbar">
 
-<div class="icon"></div>
+    <!-- LEFT -->
+    <div class="left">
+        <div class="icon"></div>
 
-<div class="info">
-<h2 id="name">Iliya's Aoh3 Mod</h2>
-<a class="download" href="files/mod.zip">Download</a>
-</div>
+        <div class="titleBox">
+            <h2 id="name">Iliya's Aoh3 Mod</h2>
+            <a class="download" href="files/iliya.zip">Download</a>
+        </div>
+    </div>
 
-<div class="likeBox">
-<div class="btn" onclick="like()">👍</div>
-<span id="likes">0</span>
-
-<div class="btn" onclick="dislike()">👎</div>
-<span id="dislikes">0</span>
-</div>
-
-<div class="stats">
-<div>👁 <span id="views">0</span></div>
-</div>
+    <!-- RIGHT -->
+    <div class="right">
+        <div class="btn" onclick="like()">👍 <span id="likes">0</span></div>
+        <div class="btn" onclick="dislike()">👎 <span id="dislikes">0</span></div>
+        <div class="stats">👁 <span id="views">0</span></div>
+    </div>
 
 </div>
 
-<!-- TABS (جدا از header طبق خواسته تو) -->
+<!-- CONTENT -->
 <div class="content">
 
-<div class="tabButtons">
-<div onclick="showTab('about')">About</div>
-<div onclick="showTab('images')">Images</div>
-<div onclick="showTab('comments')">Comments</div>
+<div class="tabs">
+    <div class="tabBtn active" onclick="showTab('about')">About</div>
+    <div class="tabBtn" onclick="showTab('images')">Images</div>
+    <div class="tabBtn" onclick="showTab('comments')">Comments</div>
 </div>
 
 <div id="about" class="tab active">
-<h3>About Mod</h3>
-<p>This is a custom AoH3 mod with new systems, nations and improvements.</p>
-<img src="https://via.placeholder.com/400x200">
+    <h3>About this mod</h3>
+    <p>This is mod description goes here...</p>
 </div>
 
 <div id="images" class="tab">
-<p>No images yet</p>
+    <div class="box">Images here</div>
 </div>
 
 <div id="comments" class="tab">
-<p>No comments yet</p>
+    <div class="box">Comments here</div>
 </div>
 
 </div>
