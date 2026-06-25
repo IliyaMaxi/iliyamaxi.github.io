@@ -1,63 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Iliya Mods - Downloads</title>
+<meta charset="UTF-8">
+<title>Mods - Iliya</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+    text-align: center;
+}
 
-        .mod {
-            background: #222;
-            margin: 20px auto;
-            padding: 20px;
-            width: 80%;
-            border-radius: 12px;
-        }
+h1 {
+    margin-top: 30px;
+}
 
-        .download {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 20px;
-            background: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
+/* کانتینر افقی */
+.mods {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
 
-        .download:hover {
-            box-shadow: 0 0 15px lime;
-        }
-    </style>
+/* کارت‌ها */
+.mod {
+    background: #1e1e1e;
+    padding: 20px;
+    width: 250px;
+    border-radius: 12px;
+    transition: 0.3s;
+    animation: fadeUp 0.8s ease-out;
+}
+
+/* انیمیشن ورود کارت‌ها */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* افکت نور */
+.mod:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px lime;
+}
+
+/* دکمه دانلود */
+a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+a:hover {
+    box-shadow: 0 0 15px lime;
+}
+</style>
+
 </head>
 
 <body>
 
-    <h1>Mods Download Page</h1>
+<h1>Mods Download</h1>
+
+<div class="mods">
 
     <div class="mod">
         <h2>Iliya's AoH3 Mod</h2>
-        <p>Main custom mod for Age of History 3</p>
-        <a class="download" href="#">Download (link later)</a>
+        <p>Main mod with custom features</p>
+        <a href="#">Download</a>
     </div>
 
     <div class="mod">
         <h2>Iran Formable Civilizations 2</h2>
-        <p>New civilizations and expansion for Iran</p>
-        <a class="download" href="#">Download (link later)</a>
+        <p>Iran expansion mod</p>
+        <a href="#">Download</a>
     </div>
 
     <div class="mod">
         <h2>Turkish Formable Civilizations</h2>
-        <p>Custom Turkish expansion mod</p>
-        <a class="download" href="#">Download (link later)</a>
+        <p>Turkey expansion mod</p>
+        <a href="#">Download</a>
     </div>
+
+</div>
 
 </body>
 </html>
