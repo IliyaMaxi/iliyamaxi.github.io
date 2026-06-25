@@ -12,62 +12,102 @@ body{
     color:white;
 }
 
-/* tabs */
+/* TOP BAR */
 .tabs{
     display:flex;
-    gap:10px;
+    gap:12px;
     padding:12px;
-    background:#1a1a1a;
-    border-bottom:1px solid #333;
+    background:#141414;
+    border-bottom:1px solid #2a2a2a;
 }
 
 .tab{
     padding:8px 12px;
-    cursor:pointer;
     border-radius:6px;
+    cursor:pointer;
+    transition:0.2s;
+    opacity:0.8;
 }
 
 .tab:hover{
     background:#2a2a2a;
+    opacity:1;
 }
 
-/* sections */
+.tab.active{
+    background:#2ecc71;
+    color:black;
+    font-weight:bold;
+    opacity:1;
+}
+
+/* FADE ANIMATION */
 .section{
     display:none;
-    padding:20px;
+    padding:25px;
+    animation: fade 0.35s ease;
 }
 
 .section.active{
     display:block;
 }
 
-/* layout */
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* MAIN LAYOUT */
 .main{
     display:flex;
     gap:20px;
     flex-wrap:wrap;
-    padding:25px;
+    align-items:center;
 }
 
-/* icon */
+/* ICON */
 .icon{
-    width:100px;
-    height:100px;
-    background:#222;
-    border-radius:10px;
+    width:90px;
+    height:90px;
+    background:#1e1e1e;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    color:#aaa;
+    border:1px solid #2a2a2a;
 }
 
-/* download */
+/* TEXT */
+.info{
+    max-width:520px;
+}
+
+.info p{
+    opacity:0.85;
+    line-height:1.5;
+}
+
+/* DOWNLOAD BUTTON */
 .download{
     display:inline-block;
     margin-top:12px;
     padding:10px 16px;
-    background:green;
-    color:white;
+    background:#2ecc71;
+    color:black;
     text-decoration:none;
     border-radius:8px;
+    font-weight:bold;
+    transition:0.2s;
 }
 
+.download:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px #2ecc71;
+}
+
+/* LIKE BAR */
 .btns{
     margin-top:12px;
     display:flex;
@@ -76,17 +116,38 @@ body{
 
 .btn{
     padding:6px 10px;
-    background:#222;
+    background:#1f1f1f;
+    border:1px solid #2a2a2a;
     border-radius:6px;
     cursor:pointer;
+    transition:0.2s;
+}
+
+.btn:hover{
+    background:#2a2a2a;
+}
+
+/* CONTENT BOX */
+.box{
+    background:#111;
+    border:1px solid #1f1f1f;
+    border-radius:10px;
+    padding:15px;
 }
 </style>
 
 <script>
 function showTab(id){
-    let s = document.querySelectorAll(".section");
-    s.forEach(x => x.classList.remove("active"));
+
+    let sections = document.querySelectorAll(".section");
+    let tabs = document.querySelectorAll(".tab");
+
+    sections.forEach(s => s.classList.remove("active"));
+    tabs.forEach(t => t.classList.remove("active"));
+
     document.getElementById(id).classList.add("active");
+
+    event.target.classList.add("active");
 }
 </script>
 
@@ -95,23 +156,26 @@ function showTab(id){
 <body>
 
 <div class="tabs">
-    <div class="tab" onclick="showTab('overview')">Overview</div>
+    <div class="tab active" onclick="showTab('overview')">Overview</div>
     <div class="tab" onclick="showTab('images')">Images</div>
     <div class="tab" onclick="showTab('videos')">Videos</div>
     <div class="tab" onclick="showTab('comments')">Comments</div>
 </div>
 
-<!-- DEFAULT -->
+<!-- OVERVIEW -->
 <div id="overview" class="section active">
 
     <div class="main">
 
-        <div class="icon"></div>
+        <div class="icon">MOD</div>
 
-        <div>
+        <div class="info">
             <h1>Mod Name</h1>
 
-            <p>Mod description goes here...</p>
+            <p>
+                Custom Age of History 3 mod with new civilizations,
+                improved gameplay systems and balancing.
+            </p>
 
             <a class="download" href="files/mod.zip">Download</a>
 
@@ -125,16 +189,19 @@ function showTab(id){
 
 </div>
 
+<!-- IMAGES -->
 <div id="images" class="section">
-    Images section
+    <div class="box">No images yet</div>
 </div>
 
+<!-- VIDEOS -->
 <div id="videos" class="section">
-    Videos section
+    <div class="box">No videos yet</div>
 </div>
 
+<!-- COMMENTS -->
 <div id="comments" class="section">
-    Comments section
+    <div class="box">No comments yet</div>
 </div>
 
 </body>
