@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mods</title>
+<title>Iliya Mods</title>
 
 <style>
 body{
@@ -13,24 +13,16 @@ body{
     text-align:center;
 }
 
-/* HEADER ANIMATION */
 .header{
     margin-top:30px;
-    animation: fadeDown 0.8s ease;
+    animation: fadeDown 0.7s ease;
 }
 
 @keyframes fadeDown{
-    from{
-        opacity:0;
-        transform:translateY(-40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-/* SEARCH */
 input{
     padding:10px;
     width:250px;
@@ -39,7 +31,6 @@ input{
     margin-top:15px;
 }
 
-/* CONTAINER */
 .container{
     display:flex;
     justify-content:center;
@@ -48,7 +39,6 @@ input{
     margin-top:40px;
 }
 
-/* CARD ANIMATION */
 .card{
     background:#1e1e1e;
     width:240px;
@@ -61,16 +51,12 @@ input{
     transition:0.3s;
 }
 
-/* delay برای هر کارت */
 .card:nth-child(1){animation-delay:0.1s;}
 .card:nth-child(2){animation-delay:0.2s;}
 .card:nth-child(3){animation-delay:0.3s;}
 
 @keyframes cardIn{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    to{opacity:1; transform:translateY(0);}
 }
 
 .card:hover{
@@ -78,7 +64,6 @@ input{
     box-shadow:0 0 20px lime;
 }
 
-/* BUTTON */
 a{
     display:inline-block;
     margin-top:10px;
@@ -96,8 +81,10 @@ function searchMods(){
     let cards = document.getElementsByClassName("card");
 
     for(let i=0;i<cards.length;i++){
-        let text = cards[i].innerText.toLowerCase();
-        cards[i].style.display = text.includes(val) ? "block" : "none";
+        cards[i].style.display =
+            cards[i].innerText.toLowerCase().includes(val)
+            ? "block"
+            : "none";
     }
 }
 </script>
@@ -107,7 +94,7 @@ function searchMods(){
 <body>
 
 <div class="header">
-    <h1>Mods</h1>
+    <h1>Iliya Mods</h1>
     <input id="search" onkeyup="searchMods()" placeholder="Search mods...">
 </div>
 
@@ -115,17 +102,17 @@ function searchMods(){
 
     <div class="card">
         <h3>Iliya's AoH3 Mod</h3>
-        <a href="mod-iliya.html">Open</a>
+        <a href="mod.html?mod=iliya">Open</a>
     </div>
 
     <div class="card">
         <h3>Iran Formable 2</h3>
-        <a href="mod-iran.html">Open</a>
+        <a href="mod.html?mod=iran">Open</a>
     </div>
 
     <div class="card">
         <h3>Turkish Formable</h3>
-        <a href="mod-turk.html">Open</a>
+        <a href="mod.html?mod=turk">Open</a>
     </div>
 
 </div>
