@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mod Page</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f0f0f;
+    color:white;
+}
+
+/* tabs */
+.tabs{
+    display:flex;
+    gap:10px;
+    padding:12px;
+    background:#1a1a1a;
+    border-bottom:1px solid #333;
+}
+
+.tab{
+    padding:8px 12px;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+.tab:hover{
+    background:#2a2a2a;
+}
+
+/* sections */
+.section{
+    display:none;
+    padding:20px;
+}
+
+.section.active{
+    display:block;
+}
+
+/* layout */
+.main{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:25px;
+}
+
+/* icon */
+.icon{
+    width:100px;
+    height:100px;
+    background:#222;
+    border-radius:10px;
+}
+
+/* download */
+.download{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 16px;
+    background:green;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.btns{
+    margin-top:12px;
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    padding:6px 10px;
+    background:#222;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+
+<script>
+function showTab(id){
+    let s = document.querySelectorAll(".section");
+    s.forEach(x => x.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="tabs">
+    <div class="tab" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('images')">Images</div>
+    <div class="tab" onclick="showTab('videos')">Videos</div>
+    <div class="tab" onclick="showTab('comments')">Comments</div>
+</div>
+
+<!-- DEFAULT -->
+<div id="overview" class="section active">
+
+    <div class="main">
+
+        <div class="icon"></div>
+
+        <div>
+            <h1>Mod Name</h1>
+
+            <p>Mod description goes here...</p>
+
+            <a class="download" href="files/mod.zip">Download</a>
+
+            <div class="btns">
+                <div class="btn">👍 Like</div>
+                <div class="btn">👎 Dislike</div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="images" class="section">
+    Images section
+</div>
+
+<div id="videos" class="section">
+    Videos section
+</div>
+
+<div id="comments" class="section">
+    Comments section
+</div>
+
+</body>
+</html>
