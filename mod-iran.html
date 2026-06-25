@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Iran Formable 2</title>
+<title>Mod Page</title>
 
 <style>
 body{
@@ -12,84 +12,185 @@ body{
     color:white;
 }
 
-.tabs{
+/* HEADER PANEL (مثل CurseForge) */
+.topbar{
     display:flex;
-    gap:18px;
-    padding:14px;
-    background:#1a1a1a;
-    border-bottom:1px solid #333;
+    align-items:center;
+    gap:20px;
+    padding:15px;
+    background:#141414;
+    border-bottom:1px solid #2a2a2a;
+    position:sticky;
+    top:0;
 }
 
-.tab{
+.icon{
+    width:70px;
+    height:70px;
+    background:#222;
+    border-radius:10px;
+}
+
+.info h2{margin:0;}
+
+.stats{
+    margin-left:auto;
+    display:flex;
+    gap:20px;
+    font-size:14px;
+}
+
+/* BUTTONS */
+.download{
+    padding:10px 16px;
+    background:#2ecc71;
+    color:black;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* LIKE SYSTEM */
+.likeBox{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.btn{
+    cursor:pointer;
+    font-size:18px;
+    user-select:none;
+}
+
+.active{
+    color:#2ecc71;
+}
+
+/* CONTENT */
+.content{
+    padding:20px;
+}
+
+.tabButtons{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.tabButtons div{
     padding:8px 12px;
+    background:#1e1e1e;
+    border-radius:6px;
     cursor:pointer;
 }
 
-.tab:hover{
-    background:#2a2a2a;
+.tab{
+    display:none;
 }
 
-.container{
-    display:flex;
-    gap:25px;
-    padding:30px;
-    flex-wrap:wrap;
-}
-
-.image{
-    width:320px;
-    height:180px;
-    background:#222;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.info{
-    max-width:450px;
-}
-
-.download{
-    display:inline-block;
-    margin-top:15px;
-    padding:12px 18px;
-    background:green;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-}
-
-.download:hover{
-    box-shadow:0 0 20px lime;
+.tab.active{
+    display:block;
 }
 </style>
+
+<script>
+
+let likes = 0;
+let dislikes = 0;
+let liked = false;
+let disliked = false;
+let views = 0;
+
+function load(){
+    views++;
+    document.getElementById("views").innerText = views;
+    document.getElementById("likes").innerText = likes;
+    document.getElementById("dislikes").innerText = dislikes;
+}
+
+function like(){
+    if(liked){
+        likes--;
+        liked=false;
+    }else{
+        likes++;
+        liked=true;
+        if(disliked){dislikes--;disliked=false;}
+    }
+    load();
+}
+
+function dislike(){
+    if(disliked){
+        dislikes--;
+        disliked=false;
+    }else{
+        dislikes++;
+        disliked=true;
+        if(liked){likes--;liked=false;}
+    }
+    load();
+}
+
+function showTab(id){
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+window.onload = load;
+</script>
 
 </head>
 
 <body>
 
-<div class="tabs">
-    <div class="tab">Overview</div>
-    <div class="tab">Images</div>
-    <div class="tab">Videos</div>
-    <div class="tab">Comments</div>
+<!-- TOP PANEL -->
+<div class="topbar">
+
+<div class="icon"></div>
+
+<div class="info">
+<h2 id="name">Mod Name</h2>
+<a class="download" href="files/mod.zip">Download</a>
 </div>
 
-<div class="container">
+<div class="likeBox">
+<div class="btn" onclick="like()">👍</div>
+<span id="likes">0</span>
 
-    <div class="image">Iran Mod Image</div>
+<div class="btn" onclick="dislike()">👎</div>
+<span id="dislikes">0</span>
+</div>
 
-    <div class="info">
-        <h1>Iran Formable Civilizations 2</h1>
+<div class="stats">
+<div>👁 <span id="views">0</span></div>
+</div>
 
-        <p>
-            Expansion mod adding new Iranian civilizations,
-            improved balance and historical content for AoH3.
-        </p>
+</div>
 
-        <a class="download" href="files/iran-mod.zip">Download</a>
-    </div>
+<!-- TABS (جدا از header طبق خواسته تو) -->
+<div class="content">
+
+<div class="tabButtons">
+<div onclick="showTab('about')">About</div>
+<div onclick="showTab('images')">Images</div>
+<div onclick="showTab('comments')">Comments</div>
+</div>
+
+<div id="about" class="tab active">
+<h3>About Mod</h3>
+<p>This is a custom AoH3 mod with new systems, nations and improvements.</p>
+<img src="https://via.placeholder.com/400x200">
+</div>
+
+<div id="images" class="tab">
+<p>No images yet</p>
+</div>
+
+<div id="comments" class="tab">
+<p>No comments yet</p>
+</div>
 
 </div>
 
