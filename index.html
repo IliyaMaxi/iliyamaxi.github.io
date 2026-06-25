@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Iliya Mods - Age of History 3 Custom Mods</title>
+<meta charset="UTF-8">
+<title>Iliya Mods</title>
 
-    <meta name="description" content="Download Age of History 3 mods by Iliya Maxi including custom civilizations and expansion packs.">
-    <meta name="keywords" content="AoH3 mods, Iliya Mods, Age of History 3 mods, custom civilizations, Iran mod, Turkey mod">
-    <meta name="author" content="Iliya Maxi">
+<meta name="description" content="Age of History 3 custom mods by Iliya Maxi">
+<meta name="keywords" content="AoH3 mods, Iliya Mods, custom civilizations">
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #0f0f0f;
-            color: white;
-            text-align: center;
-            padding: 50px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 25px;
-            background: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-        }
+/* انیمیشن ورود */
+.container {
+    text-align: center;
+    animation: dropIn 1s ease-out;
+}
 
-        a:hover {
-            background: limegreen;
-            box-shadow: 0 0 15px lime;
-        }
-    </style>
+@keyframes dropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+p {
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+a {
+    padding: 15px 30px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+a:hover {
+    box-shadow: 0 0 20px lime;
+    transform: scale(1.05);
+}
+</style>
+
 </head>
 
 <body>
 
+<div class="container">
     <h1>Welcome to Iliya Mods</h1>
-    <p>Custom Age of History 3 mods by Iliya Maxi</p>
-
+    <p>Age of History 3 Custom Mods by Iliya Maxi</p>
     <a href="mods.html">Enter Mods</a>
+</div>
 
 </body>
 </html>
