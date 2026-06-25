@@ -6,12 +6,31 @@
 
 <style>
 body {
+    margin:0;
+    font-family:Arial;
     background:#0f0f0f;
     color:white;
-    font-family:Arial;
     text-align:center;
 }
 
+/* انیمیشن ورود کل صفحه */
+.header {
+    animation: drop 0.9s ease;
+    margin-top:30px;
+}
+
+@keyframes drop {
+    from {
+        opacity:0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+/* سرچ */
 input {
     padding:10px;
     width:250px;
@@ -20,6 +39,7 @@ input {
     margin-top:20px;
 }
 
+/* کارت‌ها */
 .container {
     display:flex;
     justify-content:center;
@@ -28,12 +48,26 @@ input {
     margin-top:40px;
 }
 
+/* انیمیشن کارت‌ها */
 .card {
     background:#1e1e1e;
     width:260px;
     padding:15px;
     border-radius:12px;
+
+    animation: fadeUp 0.8s ease;
     transition:0.3s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity:0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
 }
 
 .card:hover {
@@ -41,6 +75,7 @@ input {
     box-shadow:0 0 20px lime;
 }
 
+/* دکمه */
 a {
     display:inline-block;
     margin-top:10px;
@@ -50,21 +85,20 @@ a {
     text-decoration:none;
     border-radius:6px;
 }
+
+a:hover {
+    box-shadow:0 0 15px lime;
+}
 </style>
 
 <script>
 function searchMods() {
     let val = document.getElementById("search").value.toLowerCase();
-
     let cards = document.getElementsByClassName("card");
 
     for(let i=0;i<cards.length;i++){
         let text = cards[i].innerText.toLowerCase();
-        if(text.includes(val)){
-            cards[i].style.display = "block";
-        } else {
-            cards[i].style.display = "none";
-        }
+        cards[i].style.display = text.includes(val) ? "block" : "none";
     }
 }
 </script>
@@ -73,9 +107,11 @@ function searchMods() {
 
 <body>
 
-<h1>Mods</h1>
+<div class="header">
+    <h1>Mods</h1>
 
-<input id="search" onkeyup="searchMods()" placeholder="Search mods...">
+    <input id="search" onkeyup="searchMods()" placeholder="Search mods...">
+</div>
 
 <div class="container">
 
