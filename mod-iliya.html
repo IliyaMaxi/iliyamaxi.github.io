@@ -1,37 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Iliya Mod</title>
+<title>Iliya's AoH3 Mod</title>
 
 <style>
-body {
-    background:#111;
-    color:white;
+body{
+    margin:0;
     font-family:Arial;
-    padding:20px;
+    background:#0f0f0f;
+    color:white;
 }
 
-.box {
-    max-width:700px;
-    margin:auto;
+/* تب‌ها بالا */
+.tabs{
+    display:flex;
+    gap:18px;
+    padding:14px;
+    background:#1a1a1a;
+    border-bottom:1px solid #333;
 }
 
-.section {
-    background:#1e1e1e;
-    padding:15px;
-    margin-top:15px;
+.tab{
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.tab:hover{
+    background:#2a2a2a;
+}
+
+/* بخش اصلی افقی */
+.container{
+    display:flex;
+    gap:25px;
+    padding:30px;
+    flex-wrap:wrap;
+}
+
+/* عکس مود */
+.image{
+    width:320px;
+    height:180px;
+    background:#222;
     border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-.download {
+/* توضیحات */
+.info{
+    max-width:450px;
+}
+
+.info p{
+    line-height:1.6;
+    opacity:0.9;
+}
+
+/* دکمه دانلود */
+.download{
     display:inline-block;
-    margin-top:20px;
+    margin-top:15px;
     padding:12px 18px;
     background:green;
     color:white;
     text-decoration:none;
     border-radius:8px;
+}
+
+.download:hover{
+    box-shadow:0 0 20px lime;
+}
+
+/* بخش‌های پایین آینده */
+.section{
+    margin:20px;
+    padding:15px;
+    background:#1e1e1e;
+    border-radius:10px;
 }
 </style>
 
@@ -39,27 +88,48 @@ body {
 
 <body>
 
-<div class="box">
+<!-- Tabs -->
+<div class="tabs">
+    <div class="tab">Overview</div>
+    <div class="tab">Images</div>
+    <div class="tab">Videos</div>
+    <div class="tab">Comments</div>
+</div>
 
-<h1>Iliya's AoH3 Mod</h1>
+<!-- بالا: عکس + توضیح -->
+<div class="container">
 
+    <div class="image">
+        Mod Image
+    </div>
+
+    <div class="info">
+        <h1>Iliya's AoH3 Mod</h1>
+
+        <p>
+            A custom Age of History 3 mod with improved mechanics,
+            new civilizations and balanced gameplay designed for PC users.
+        </p>
+
+        <a class="download" href="files/iliya-mod.zip">Download Mod</a>
+    </div>
+
+</div>
+
+<!-- بخش‌های آینده -->
 <div class="section">
-<h3>Description</h3>
-<p>Full custom AoH3 mod with new mechanics and civilizations.</p>
+    <h3>Images</h3>
+    <p>Coming soon...</p>
 </div>
 
 <div class="section">
-<h3>Images</h3>
-<p>Coming soon...</p>
+    <h3>Videos</h3>
+    <p>Coming soon...</p>
 </div>
 
 <div class="section">
-<h3>Comments</h3>
-<p>No comments yet.</p>
-</div>
-
-<a class="download" href="#">Download</a>
-
+    <h3>Comments</h3>
+    <p>Coming soon...</p>
 </div>
 
 </body>
