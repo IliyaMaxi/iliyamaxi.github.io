@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mods</title>
+<title>Mods - Iliya</title>
 
 <style>
 body {
@@ -10,6 +10,14 @@ body {
     color:white;
     font-family:Arial;
     text-align:center;
+}
+
+input {
+    padding:10px;
+    width:250px;
+    border:none;
+    border-radius:8px;
+    margin-top:20px;
 }
 
 .container {
@@ -30,7 +38,7 @@ body {
 
 .card:hover {
     transform:scale(1.05);
-    box-shadow:0 0 25px lime;
+    box-shadow:0 0 20px lime;
 }
 
 a {
@@ -44,31 +52,50 @@ a {
 }
 </style>
 
+<script>
+function searchMods() {
+    let val = document.getElementById("search").value.toLowerCase();
+
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0;i<cards.length;i++){
+        let text = cards[i].innerText.toLowerCase();
+        if(text.includes(val)){
+            cards[i].style.display = "block";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+</script>
+
 </head>
 
 <body>
 
-<h1>Mods List</h1>
+<h1>Mods</h1>
+
+<input id="search" onkeyup="searchMods()" placeholder="Search mods...">
 
 <div class="container">
 
-<div class="card">
-<h3>Iliya's AoH3 Mod</h3>
-<p>Main expansion mod</p>
-<a href="mod-iliya.html">View</a>
-</div>
+    <div class="card">
+        <h3>Iliya's AoH3 Mod</h3>
+        <p>Main mod</p>
+        <a href="mod-iliya.html">Download Page</a>
+    </div>
 
-<div class="card">
-<h3>Iran Formable 2</h3>
-<p>Iran civilizations mod</p>
-<a href="mod-iran.html">View</a>
-</div>
+    <div class="card">
+        <h3>Iran Formable 2</h3>
+        <p>Iran civilizations</p>
+        <a href="mod-iran.html">Download Page</a>
+    </div>
 
-<div class="card">
-<h3>Turkish Formable</h3>
-<p>Turkey expansion mod</p>
-<a href="mod-turk.html">View</a>
-</div>
+    <div class="card">
+        <h3>Turkish Formable</h3>
+        <p>Turkey expansion</p>
+        <a href="mod-turk.html">Download Page</a>
+    </div>
 
 </div>
 
